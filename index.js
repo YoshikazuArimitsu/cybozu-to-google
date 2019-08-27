@@ -100,6 +100,11 @@ const csvPath = path.join(csvDir, 'schedule.csv');
     downloadPath: csvDir,
   });
 
+  if(config.basicAuthUser && config.basicAuthPass) {
+    await page.authenticate({ username: config.basicAuthUser, password: config.basicAuthPass });
+  }
+
+
   log('>>>> Fetching events from Cybozu Calendar...');
 
   // Login
